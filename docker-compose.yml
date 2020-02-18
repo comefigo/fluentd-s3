@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  td-agent:
+    build:
+      context: ./
+    image: td-agent
+    container_name: td-agent
+    volumes:
+      - ./fluent.conf:/fluentd/etc/fluent.conf
+    ports:
+      - 9880:9880
+    environment:
+      - FLUENTD_CONF=fluent.conf
+      - TZ=Asia/Tokyo
